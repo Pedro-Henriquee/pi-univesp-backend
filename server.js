@@ -7,7 +7,7 @@ const pool = require('./db');
 const app = express();
 
 app.use(cors({
-  origin: "*"
+  origin: "https://gestao-good-market.vercel.app"
 }));
 app.use(express.json());
 
