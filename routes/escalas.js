@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../db");
 
-router.get("/escalas", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM escalas");
     res.status(200).json(result.rows);
@@ -11,7 +11,7 @@ router.get("/escalas", async (req, res) => {
   }
 });
 
-router.get("/escalas/:funcionario_id", async (req, res) => {
+router.get("/:funcionario_id", async (req, res) => {
   const { funcionario_id } = req.params;
 
   try {
@@ -30,7 +30,7 @@ router.get("/escalas/:funcionario_id", async (req, res) => {
   }
 });
 
-router.post("/escalas/criar", async (req, res) => {
+router.post("/criar", async (req, res) => {
   const { funcionario_id, dia_semana, hora_inicio, hora_fim, folga } = req.body;
 
   try {
@@ -53,7 +53,7 @@ router.post("/escalas/criar", async (req, res) => {
   }
 });
 
-router.put("/escalas/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { funcionario_id, dia_semana, hora_inicio, hora_fim, folga } = req.body;
 
@@ -80,7 +80,7 @@ router.put("/escalas/:id", async (req, res) => {
   }
 });
 
-router.delete("/escalas/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
